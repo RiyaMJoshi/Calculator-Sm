@@ -1,0 +1,234 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>Calculator</title>
+	<link rel="stylesheet" type="text/css" href="styles.css">
+	<link rel="stylesheet" href="https://pro.fontawesome.com/releases/v5.10.0/css/all.css"
+		integrity="sha384-AYmEC3Yw5cVb3ZcuHtOA93w35dYTsvhLPVnYs9eStHfGJvOvKxVfELGroGkvsg+p" crossorigin="anonymous" />
+	<script src="script.js"></script>
+</head>
+
+<body>
+	<form class="main-box" name="calc">
+		<div class="clipboard">
+			<input type="text" class="input-display" id="display-clip" name="clip" placeholder="0">
+		</div>
+
+		<div class="common-row">
+			<div class="common-col">
+				<button type="button" class="common-btn upper-row" id="btn-deg" name="deg_rad"
+					onclick="degToRad()">DEG</button>
+			</div>
+			<div class="common-col">
+				<button type="button" class="common-btn upper-row" id="btn-f-e" value="E"
+					onclick="toExpo()">F-E</button>
+			</div>
+		</div>
+
+
+		<!-- Trigonometry and Function -->
+
+		<div class="common-row" style="font-size: 14px;">
+			<div class="common-col select-col">
+				<button type="button" class="common-btn upper-row" id="btn-select-trigo" disabled><span
+						style="font-size: x-large;" onclick="showTrigo()">&lrtri;</span> Trigonometry
+				</button>
+			</div>
+			<div class="common-col">
+				<button type="button" class="common-btn upper-row" id="btn-sin" value="sin" onclick="sin()">sin</button>
+			</div>
+			<div class="common-col">
+				<button type="button" class="common-btn upper-row" id="btn-cos" value="cos" onclick="cos()">cos</button>
+			</div>
+			<div class="common-col">
+				<button type="button" class="common-btn upper-row" id="btn-tan" value="tan" onclick="tan()">tan</button>
+			</div>
+		</div>
+		
+		<div class="common-row">
+			<div class="common-col select-col">
+				<button type="button" class="common-btn upper-row" id="btn-select-fn" disabled><span
+						style="font-size: x-large;"><i class="fas fa-function"></i></span> Function
+				</button>
+			</div>
+			<div class="common-col">
+				<button type="button" class="common-btn upper-row" id="btn-hyp" value="rand"
+					onclick="rand()">rand</button>
+			</div>
+			<div class="common-col">
+				<button type="button" class="common-btn upper-row" id="btn-sec" value="ceil" onclick="ceil()"><span
+						style="border: 1px solid black; border-bottom: 0; padding: 2px;">x</span></button>
+			</div>
+			<div class="common-col">
+				<button type="button" class="common-btn upper-row" id="btn-csc" value="floor" onclick="floor()"><span
+						style="border: 1px solid black; border-top: 0; padding: 2px;">x</span></button>
+			</div>
+		</div>
+		<!-- End Trigonometry and Function -->
+
+		<!-- Normal Buttons -->
+		<div class="common-row">
+			<div class="common-col">
+				<button type="button" class="common-btn" id="btn-2nd"><span>2<sup>nd</sup></span></button>
+			</div>
+			<div class="common-col">
+				<button type="button" class="common-btn" id="btn-pi" value="3.1415926535897932384626433832795"
+					onclick="number(value)"><i class="far fa-pi"></i></button>
+			</div>
+			<div class="common-col">
+				<button type="button" class="common-btn" id="btn-e" value="2.7182818284590452353602874713527"
+					onclick="number(value)">e</button>
+			</div>
+			<div class="common-col">
+				<button type="button" class="common-btn clear" id="btn-clear" onclick="clearAll(value)">C</button>
+			</div>
+			<div class="common-col">
+				<button type="button" class="common-btn" id="btn-backspace" value="backspc" onclick="backspc()"><i
+						class="far fa-backspace"></i></button>
+			</div>
+		</div>
+
+
+		<div class="common-row">
+			<div class="common-col">
+				<button type="button" class="common-btn" id="btn-x2" value="x^2"
+					onclick="square()"><span>x<sup>2</sup></span></button>
+			</div>
+			<div class="common-col">
+				<button type="button" class="common-btn" id="btn-1byx" value="1/x" onclick="oneByX()">1/x</button>
+			</div>
+			<div class="common-col">
+				<button type="button" class="common-btn" id="btn-abs-x" value="abs" onclick="abs()">|x|</button>
+			</div>
+			<div class="common-col">
+				<button type="button" class="common-btn" id="btn-exp" value="exp" onclick="ePowX()">exp</button>
+			</div>
+			<div class="common-col">
+				<button type="button" class="common-btn" id="btn-mod" value="%" onclick="number(value)">mod</button>
+			</div>
+		</div>
+
+		<div class="common-row">
+			<div class="common-col">
+				<button type="button" class="common-btn" id="btn-sqrt" value="sqrt" onclick="sqrt()"><span
+						style="white-space: nowrap; font-size:larger">&radic;<span
+							style="text-decoration:overline;">x</span></span></button>
+			</div>
+			<div class="common-col">
+				<button type="button" class="common-btn" id="btn-bracket-open" value="("
+					onclick="number(value)">(</button>
+			</div>
+			<div class="common-col">
+				<button type="button" class="common-btn" id="btn-bracket-close" value=")"
+					onclick="number(value)">)</button>
+			</div>
+			<div class="common-col">
+				<button type="button" class="common-btn" id="btn-fact-n" value="fact" onclick="fact()">n!</button>
+			</div>
+			<div class="common-col">
+				<button type="button" class="common-btn" id="btn-divide" value="/" onclick="number(value)"><i
+						class="fal fa-divide"></i></button>
+			</div>
+		</div>
+
+		<div class="common-row">
+			<div class="common-col">
+				<button type="button" class="common-btn" id="btn-xy"
+					onclick="xPowerY()"><span>x<sup>y</sup></span></button>
+			</div>
+			<div class="common-col">
+				<button type="button" class="common-btn btn-digit" id="btn-plus-seven" value="7"
+					onclick="number(value)">7</button>
+			</div>
+			<div class="common-col">
+				<button type="button" class="common-btn btn-digit" id="btn-eight" value="8"
+					onclick="number(value)">8</button>
+			</div>
+			<div class="common-col">
+				<button type="button" class="common-btn btn-digit" id="btn-nine" value="9"
+					onclick="number(value)">9</button>
+			</div>
+			<div class="common-col">
+				<button type="button" class="common-btn" id="btn-multiply" value="*" onclick="number(value)"><i
+						class="fal fa-times"></i></button>
+			</div>
+		</div>
+
+		<div class="common-row">
+			<div class="common-col">
+				<button type="button" class="common-btn" id="btn-10x" value="10x"
+					onclick="tenPowerX()"><span>10<sup>x</sup></span></button>
+			</div>
+			<div class="common-col">
+				<button type="button" class="common-btn btn-digit" id="btn-four" value="4"
+					onclick="number(value)">4</button>
+			</div>
+			<div class="common-col">
+				<button type="button" class="common-btn btn-digit" id="btn-five" value="5"
+					onclick="number(value)">5</button>
+			</div>
+			<div class="common-col">
+				<button type="button" class="common-btn btn-digit" id="btn-six" value="6"
+					onclick="number(value)">6</button>
+			</div>
+			<div class="common-col">
+				<button type="button" class="common-btn" id="btn-minus" value="-" onclick="number(value)"><i
+						class="fal fa-minus"></i></button>
+			</div>
+		</div>
+
+		<div class="common-row">
+			<div class="common-col">
+				<button type="button" class="common-btn" id="btn-log" value="log" onclick="log10()">log</button>
+			</div>
+			<div class="common-col">
+				<button type="button" class="common-btn btn-digit" id="btn-one" value="1"
+					onclick="number(value)">1</button>
+			</div>
+			<div class="common-col">
+				<button type="button" class="common-btn btn-digit" id="btn-two" value="2"
+					onclick="number(value)">2</button>
+			</div>
+			<div class="common-col">
+				<button type="button" class="common-btn btn-digit" id="btn-three" value="3"
+					onclick="number(value)">3</button>
+			</div>
+			<div class="common-col">
+				<button type="button" class="common-btn" id="btn-plus" value="+" onclick="number(value)"><i
+						class="fal fa-plus"></i></button>
+			</div>
+		</div>
+
+		<div class="common-row">
+			<div class="common-col">
+				<button type="button" class="common-btn" id="btn-ln" value="ln" onclick="ln()">ln</button>
+			</div>
+			<div class="common-col">
+				<button type="button" class="common-btn btn-digit" id="btn-plus-minus" value="+/-"
+					onclick="changeSign()">+/-</button>
+			</div>
+			<div class="common-col">
+				<button type="button" class="common-btn btn-digit" id="btn-zero" value="0"
+					onclick="number(value)">0</button>
+			</div>
+			<div class="common-col">
+				<button type="button" class="common-btn btn-digit" id="btn-decimal" value="."
+					onclick="number(value)">.</button>
+			</div>
+			<div class="common-col">
+				<button type="button" class="common-btn" id="btn-equals" value="=" onclick="equal()"><i
+						class="fal fa-equals"></i></button>
+			</div>
+		</div>
+		<!-- End Normal Buttons -->
+	</form>
+
+	<script>
+		
+	</script>
+</body>
+
+</html>
